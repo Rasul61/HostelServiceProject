@@ -11,7 +11,7 @@ public class UserRequest {
     String name;
     String email;
     String phoneNumber;
-    //Long reservationId;
+    Long reservationId;
     String universityName;
     String studentCardNumber;
     String passportNumber;

@@ -54,7 +54,7 @@ public class ReservationServiceHandle implements ReservationService {
         Room room = roomRepository.findById(reservationRequest.getRoomId()).
                 orElseThrow(() -> new RuntimeException("Not found room!"));
         User user = userRepository.findById(reservationRequest.getUserId()).
-                orElseThrow(() -> new RuntimeException("Not found room!"));
+                orElseThrow(() -> new RuntimeException("Not found user!"));
 
         reservation.setStartDate(reservationRequest.getStartDate());
         reservation.setEndDate(reservationRequest.getEndDate());

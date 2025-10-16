@@ -25,8 +25,8 @@ public class User {
     String phoneNumber;
 
 
-//    @OneToOne
-//    Reservation reservation;
+    @OneToOne
+    Reservation reservation;
 
 
 }

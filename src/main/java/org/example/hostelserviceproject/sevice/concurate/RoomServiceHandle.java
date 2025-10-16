@@ -42,7 +42,6 @@ public class RoomServiceHandle implements RoomService {
                 orElseThrow(() -> new RuntimeException("Not found room!"));
         room.setRoomNumber(room.getRoomNumber());
         room.setPricePerNight(room.getPricePerNight());
-        // room.setUser(room.getUser());
         room.setHostel(room.getHostel());
 
         return roomRepository.save(room);

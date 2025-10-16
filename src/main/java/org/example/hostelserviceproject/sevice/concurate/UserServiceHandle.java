@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.example.hostelserviceproject.dto.request.UserRequest;
 import org.example.hostelserviceproject.dto.response.UserResponse;
 import org.example.hostelserviceproject.entity.Customer;
+import org.example.hostelserviceproject.entity.Reservation;
 import org.example.hostelserviceproject.entity.Student;
 import org.example.hostelserviceproject.entity.User;
 import org.example.hostelserviceproject.mapper.UserMapper;
+import org.example.hostelserviceproject.repository.ReservationRepository;
 import org.example.hostelserviceproject.repository.UserRepository;
 import org.example.hostelserviceproject.sevice.abstraction.UserService;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class UserServiceHandle implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final ReservationRepository reservationRepository;
 
     @Override
     public void addUser(UserRequest userRequest) {
@@ -46,26 +49,32 @@ public class UserServiceHandle implements UserService {
 
     @Override
     public User updateUser(Long id, UserRequest userRequest) {
+
         if (userRequest.getStudentCardNumber() != null) {
             Student user = (Student) userRepository.findById(id).
-                    orElseThrow(() -> new RuntimeException("Not found user!"));
+                    orElseThrow(() -> new RuntimeException("Not found student!"));
+            Reservation reservation = reservationRepository.findById(userRequest.getReservationId()).
+                    orElseThrow(() -> new RuntimeException("Not found reservation!"));
 
             user.setName(userRequest.getName());
             user.setEmail(userRequest.getEmail());
             user.setPhoneNumber(userRequest.getPhoneNumber());
-            // user.setReservation(reservation);
+            user.setReservation(reservation);
             user.setUniversityName(user.getUniversityName());
             user.setStudentCardNumber(user.getStudentCardNumber());
 
             return userRepository.save(user);
         } else {
             Customer user = (Customer) userRepository.findById(id).
-                    orElseThrow(() -> new RuntimeException("Not found user!"));
+                    orElseThrow(() -> new RuntimeException("Not found customer!"));
 
+            Reservation reservation = reservationRepository.findById(userRequest.getReservationId()).
+                    orElseThrow(() -> new RuntimeException("Not found reservation!"));
 
             user.setName(userRequest.getName());
             user.setEmail(userRequest.getEmail());
             user.setPhoneNumber(userRequest.getPhoneNumber());
+            user.setReservation(reservation);
             user.setCountry(userRequest.getCountry());
             user.setPassportNumber(userRequest.getPassportNumber());
 

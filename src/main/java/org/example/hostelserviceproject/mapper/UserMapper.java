@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.hostelserviceproject.dto.request.UserRequest;
 import org.example.hostelserviceproject.dto.response.UserResponse;
 import org.example.hostelserviceproject.entity.Customer;
+import org.example.hostelserviceproject.entity.Reservation;
 import org.example.hostelserviceproject.entity.Student;
 import org.example.hostelserviceproject.entity.User;
 import org.example.hostelserviceproject.repository.ReservationRepository;
@@ -21,13 +22,13 @@ public class UserMapper {
 
     public User studentBuilder(UserRequest userRequest) {
 
-        // Reservation reservation = reservationRepository.getById(userRequest.getReservationId());
+        Reservation reservation = reservationRepository.getById(userRequest.getReservationId());
 
         Student student = Student.builder()
                 .name(userRequest.getName())
                 .email(userRequest.getEmail())
                 .phoneNumber(userRequest.getPhoneNumber())
-                //.reservation(reservation)
+                .reservation(reservation)
                 .universityName(userRequest.getUniversityName())
                 .studentCardNumber(userRequest.getStudentCardNumber())
                 .country(userRequest.getCountry())
@@ -38,13 +39,13 @@ public class UserMapper {
 
     public User customerBuilder(UserRequest userRequest) {
 
-        //  Reservation reservation = reservationRepository.getById(userRequest.getReservationId());
+        Reservation reservation = reservationRepository.getById(userRequest.getReservationId());
 
         Customer customer = Customer.builder()
                 .name(userRequest.getName())
                 .email(userRequest.getEmail())
                 .phoneNumber(userRequest.getPhoneNumber())
-                //.reservation(reservation)
+                .reservation(reservation)
                 .passportNumber(userRequest.getPassportNumber())
                 .country(userRequest.getCountry())
                 .build();
@@ -60,7 +61,6 @@ public class UserMapper {
                     .name(student.getName())
                     .email(student.getEmail())
                     .phoneNumber(student.getPhoneNumber())
-                    //.reservation(student.getReservation())
                     .universityName(student.getUniversityName())
                     .country(student.getCountry())
                     .build();
@@ -73,7 +73,6 @@ public class UserMapper {
                     .email(customer.getEmail())
                     .phoneNumber(customer.getPhoneNumber())
                     .country(customer.getCountry())
-                    // .reservation(customer.getReservation())
                     .build();
         }
         return null;
