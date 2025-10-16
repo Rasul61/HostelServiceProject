@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: HostelServiceProject
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/java_basa
+    username: root
+    password: j@varasul2005
+
+  jpa:
+    hibernate:
+      show-sql: true
+      ddl-auto: update
+
+server:
+  port: 5342
+
+
+
+
