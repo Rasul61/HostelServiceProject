@@ -1,4 +1,4 @@
-package org.example.hostelserviceproject.sevice.concurate;
+package org.example.hostelserviceproject.service.concurate;
 
 import lombok.RequiredArgsConstructor;
 import org.example.hostelserviceproject.dto.request.ReservationRequest;
@@ -10,7 +10,7 @@ import org.example.hostelserviceproject.mapper.ReservationMapper;
 import org.example.hostelserviceproject.repository.ReservationRepository;
 import org.example.hostelserviceproject.repository.RoomRepository;
 import org.example.hostelserviceproject.repository.UserRepository;
-import org.example.hostelserviceproject.sevice.abstraction.ReservationService;
+import org.example.hostelserviceproject.service.abstraction.ReservationService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

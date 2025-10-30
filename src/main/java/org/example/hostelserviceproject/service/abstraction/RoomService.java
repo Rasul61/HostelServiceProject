@@ -1,4 +1,4 @@
-package org.example.hostelserviceproject.sevice.abstraction;
+package org.example.hostelserviceproject.service.abstraction;
 
 import org.example.hostelserviceproject.dto.request.RoomRequest;
 import org.example.hostelserviceproject.dto.response.RoomResponse;

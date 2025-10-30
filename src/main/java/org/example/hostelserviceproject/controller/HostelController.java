@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.hostelserviceproject.dto.request.HostelRequest;
 import org.example.hostelserviceproject.dto.response.HostelResponse;
 import org.example.hostelserviceproject.entity.Hostel;
-import org.example.hostelserviceproject.sevice.abstraction.HostelService;
+import org.example.hostelserviceproject.service.abstraction.HostelService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

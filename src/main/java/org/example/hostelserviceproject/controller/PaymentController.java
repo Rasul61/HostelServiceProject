@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.hostelserviceproject.dto.request.PaymentRequest;
 import org.example.hostelserviceproject.dto.response.PaymentResponse;
 import org.example.hostelserviceproject.entity.Payment;
-import org.example.hostelserviceproject.sevice.abstraction.PaymentService;
+import org.example.hostelserviceproject.service.abstraction.PaymentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

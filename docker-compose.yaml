@@ -21,18 +21,6 @@ services:
       - "8080:8080"
     depends_on:
       - pgis
-#
-#  demo8:
-#    image: demo7:v2
-#    environment:
-#      - DB_HOSTNAME=postgres
-#      - DB_PORT=5432
-
-
-
-
-
-
 
 
 volumes:

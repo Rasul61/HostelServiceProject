@@ -1,4 +1,4 @@
-package org.example.hostelserviceproject.sevice.concurate;
+package org.example.hostelserviceproject.service.concurate;
 
 import lombok.RequiredArgsConstructor;
 import org.example.hostelserviceproject.dto.request.RoomRequest;
@@ -6,7 +6,7 @@ import org.example.hostelserviceproject.dto.response.RoomResponse;
 import org.example.hostelserviceproject.entity.Room;
 import org.example.hostelserviceproject.mapper.RoomMapper;
 import org.example.hostelserviceproject.repository.RoomRepository;
-import org.example.hostelserviceproject.sevice.abstraction.RoomService;
+import org.example.hostelserviceproject.service.abstraction.RoomService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
