@@ -53,11 +53,18 @@ public class PaymentServiceHandle implements PaymentService {
                 orElseThrow(() -> new RuntimeException("Not found user!"));
         Reservation reservation = reservationRepository.findById(paymentRequest.getReservationId()).
                 orElseThrow(() -> new RuntimeException("Not found reservation!"));
-
-        payment.setPayment(paymentRequest.getStatus());
-        payment.setAmount(paymentRequest.getAmount());
-        payment.setUser(user);
-        payment.setReservation(reservation);
+        if (paymentRequest.getStatus() != null) {
+            payment.setPayment(paymentRequest.getStatus());
+        }
+        if (paymentRequest.getAmount() != null) {
+            payment.setAmount(paymentRequest.getAmount());
+        }
+        if (paymentRequest.getUserId() != null) {
+            payment.setUser(user);
+        }
+        if (paymentRequest.getReservationId() != null) {
+            payment.setReservation(reservation);
+        }
 
 
         return paymentRepository.save(payment);

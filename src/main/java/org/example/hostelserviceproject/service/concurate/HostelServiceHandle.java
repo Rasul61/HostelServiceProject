@@ -42,10 +42,16 @@ public class HostelServiceHandle implements HostelService {
     public Hostel updateHostelBy(Long id, HostelRequest hostelRequest) {
         Hostel hostel = hostelRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Not found payment!"));
+        if (hostelRequest.getName() != null && !hostelRequest.getName().isEmpty()) {
+            hostel.setName(hostelRequest.getName());
+        }
+        if (hostelRequest.getAddress() != null && !hostelRequest.getAddress().isEmpty()) {
+            hostel.setAddress(hostelRequest.getAddress());
+        }
+        if (hostelRequest.getStars() != null) {
+            hostel.setStars(hostelRequest.getStars());
+        }
 
-        hostel.setName(hostelRequest.getName());
-        hostel.setAddress(hostelRequest.getAddress());
-        hostel.setStars(hostelRequest.getStars());
 
         return hostelRepository.save(hostel);
     }

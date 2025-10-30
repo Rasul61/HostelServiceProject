@@ -55,14 +55,22 @@ public class UserServiceHandle implements UserService {
                     orElseThrow(() -> new RuntimeException("Not found student!"));
             Reservation reservation = reservationRepository.findById(userRequest.getReservationId()).
                     orElseThrow(() -> new RuntimeException("Not found reservation!"));
-
-            user.setName(userRequest.getName());
-            user.setEmail(userRequest.getEmail());
-            user.setPhoneNumber(userRequest.getPhoneNumber());
+            if (userRequest.getName() != null && !userRequest.getName().isEmpty()) {
+                user.setName(userRequest.getName());
+            }
+            if (userRequest.getEmail() != null && !userRequest.getEmail().isEmpty()) {
+                user.setEmail(userRequest.getEmail());
+            }
+            if (userRequest.getPhoneNumber() != null && !userRequest.getPhoneNumber().isEmpty()) {
+                user.setPhoneNumber(userRequest.getPhoneNumber());
+            }
+            if (userRequest.getUniversityName() != null && !userRequest.getUniversityName().isEmpty()) {
+                user.setUniversityName(user.getUniversityName());
+            }
+            if (userRequest.getStudentCardNumber() != null && !userRequest.getStudentCardNumber().isEmpty()) {
+                user.setStudentCardNumber(user.getStudentCardNumber());
+            }
             user.setReservation(reservation);
-            user.setUniversityName(user.getUniversityName());
-            user.setStudentCardNumber(user.getStudentCardNumber());
-
             return userRepository.save(user);
         } else {
             Customer user = (Customer) userRepository.findById(id).
@@ -71,12 +79,23 @@ public class UserServiceHandle implements UserService {
             Reservation reservation = reservationRepository.findById(userRequest.getReservationId()).
                     orElseThrow(() -> new RuntimeException("Not found reservation!"));
 
-            user.setName(userRequest.getName());
-            user.setEmail(userRequest.getEmail());
-            user.setPhoneNumber(userRequest.getPhoneNumber());
+            if (userRequest.getName() != null && !userRequest.getName().isEmpty()) {
+                user.setName(userRequest.getName());
+            }
+            if (userRequest.getEmail() != null && !userRequest.getEmail().isEmpty()) {
+                user.setEmail(userRequest.getEmail());
+            }
+            if (userRequest.getPhoneNumber() != null && !userRequest.getPhoneNumber().isEmpty()) {
+                user.setPhoneNumber(userRequest.getPhoneNumber());
+            }
+            if (userRequest.getCountry() != null && !userRequest.getCountry().isEmpty()) {
+                user.setCountry(userRequest.getCountry());
+            }
+            if (userRequest.getPassportNumber() != null && !userRequest.getPassportNumber().isEmpty()) {
+                user.setPassportNumber(userRequest.getPassportNumber());
+            }
             user.setReservation(reservation);
-            user.setCountry(userRequest.getCountry());
-            user.setPassportNumber(userRequest.getPassportNumber());
+
 
             return userRepository.save(user);
 

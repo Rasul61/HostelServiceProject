@@ -40,9 +40,16 @@ public class RoomServiceHandle implements RoomService {
     public Room updateRoom(Long id, RoomRequest roomRequest) {
         Room room = roomRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Not found room!"));
-        room.setRoomNumber(room.getRoomNumber());
-        room.setPricePerNight(room.getPricePerNight());
-        room.setHostel(room.getHostel());
+        if (roomRequest.getRoomNumber() != null) {
+            room.setRoomNumber(room.getRoomNumber());
+        }
+        if (roomRequest.getPricePerNight() != null) {
+            room.setPricePerNight(room.getPricePerNight());
+        }
+        if (roomRequest.getHostelId() != null) {
+            room.setHostel(room.getHostel());
+        }
+
 
         return roomRepository.save(room);
     }

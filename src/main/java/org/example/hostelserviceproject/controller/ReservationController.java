@@ -33,13 +33,13 @@ public class ReservationController {
         return reservationService.getReservationById(id);
     }
 
-    @PutMapping
+    @PutMapping("/id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     Reservation updateReservation(@PathVariable Long id, @RequestBody ReservationRequest reservationRequest) {
         return reservationService.updateReservation(id, reservationRequest);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/id/{id}")
     void deleteReservation(@PathVariable Long id) {
         reservationService.deleteReservation(id);
     }

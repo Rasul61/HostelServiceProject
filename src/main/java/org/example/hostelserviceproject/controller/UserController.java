@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 
 public class UserController {
     private final UserService userService;
@@ -34,13 +34,13 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PutMapping
+    @PutMapping("/id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     User updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
         return userService.updateUser(id, userRequest);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/id/{id}")
     void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }

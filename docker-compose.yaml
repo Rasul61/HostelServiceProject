@@ -1,0 +1,39 @@
+version: '3.3'
+services:
+  pgis:
+    hostname: postgres_db
+    container_name: postgres_db
+    image: postgres
+    ports:
+      - "5000:5432"
+    volumes:
+      - db_data:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: java_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: j@varasul2005
+
+
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - pgis
+#
+#  demo8:
+#    image: demo7:v2
+#    environment:
+#      - DB_HOSTNAME=postgres
+#      - DB_PORT=5432
+
+
+
+
+
+
+
+
+volumes:
+  db_data: { }

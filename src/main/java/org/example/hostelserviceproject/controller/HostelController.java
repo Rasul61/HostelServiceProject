@@ -33,13 +33,13 @@ public class HostelController {
         return hostelService.getHostelById(id);
     }
 
-    @PutMapping
+    @PutMapping("/id/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     Hostel updateHostelBy(@PathVariable Long id, @RequestBody HostelRequest hostelRequest) {
         return hostelService.updateHostelBy(id, hostelRequest);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/id/{id}")
     void deleteHostel(@PathVariable Long id) {
         hostelService.deleteHostel(id);
     }
