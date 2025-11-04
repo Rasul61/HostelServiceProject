@@ -15,7 +15,7 @@ public class HostelMapper {
                 .build();
     }
 
-    public HostelResponse entityToResponse(Hostel hostel) {
+    public static HostelResponse entityToResponse(Hostel hostel) {
         return HostelResponse.builder()
                 .name(hostel.getName())
                 .address(hostel.getAddress())

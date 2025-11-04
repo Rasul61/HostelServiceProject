@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static org.example.hostelserviceproject.mapper.UserMapper.userResponse;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceHandle implements UserService {
@@ -35,8 +37,10 @@ public class UserServiceHandle implements UserService {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserResponse> getAllUsers() {
+        return userRepository.findAll().
+                stream().map(UserMapper::userResponse).
+                toList();
     }
 
     @Override
@@ -44,7 +48,7 @@ public class UserServiceHandle implements UserService {
         User user = userRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Not found user!"));
 
-        return userMapper.userResponse(user);
+        return userResponse(user);
     }
 
     @Override

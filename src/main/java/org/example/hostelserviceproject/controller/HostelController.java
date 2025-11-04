@@ -24,7 +24,7 @@ public class HostelController {
     }
 
     @GetMapping
-    List<Hostel> findAllHostels() {
+    List<HostelResponse> findAllHostels() {
         return hostelService.getAllHostels();
     }
 

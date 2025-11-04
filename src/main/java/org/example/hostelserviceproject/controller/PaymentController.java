@@ -24,7 +24,7 @@ public class PaymentController {
     }
 
     @GetMapping
-    List<Payment> findAllPayments() {
+    List<PaymentResponse> findAllPayments() {
         return paymentService.getAllPayments();
     }
 

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static org.example.hostelserviceproject.mapper.HostelMapper.entityToResponse;
+
 @Service
 @RequiredArgsConstructor
 public class HostelServiceHandle implements HostelService {
@@ -26,8 +28,10 @@ public class HostelServiceHandle implements HostelService {
     }
 
     @Override
-    public List<Hostel> getAllHostels() {
-        return hostelRepository.findAll();
+    public List<HostelResponse> getAllHostels() {
+        return hostelRepository.findAll().stream().
+                map(HostelMapper::entityToResponse).
+                toList();
     }
 
     @Override
@@ -35,7 +39,7 @@ public class HostelServiceHandle implements HostelService {
         Hostel hostel = hostelRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Not found hostel!"));
 
-        return hostelMapper.entityToResponse(hostel);
+        return entityToResponse(hostel);
     }
 
     @Override

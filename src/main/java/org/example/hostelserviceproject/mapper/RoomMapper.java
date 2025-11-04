@@ -25,7 +25,7 @@ public class RoomMapper {
                 .build();
     }
 
-    public RoomResponse entityToResponse(Room room) {
+    public static RoomResponse entityToResponse(Room room) {
 
         return RoomResponse.builder()
                 .roomNumber(room.getRoomNumber())

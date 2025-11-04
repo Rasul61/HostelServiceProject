@@ -27,7 +27,7 @@ public class PaymentMapper {
                 .build();
     }
 
-    public PaymentResponse entityToResponse(Payment payment) {
+    public static PaymentResponse entityToResponse(Payment payment) {
         return PaymentResponse.builder()
                 .amount(payment.getAmount())
                 .user(payment.getUser())

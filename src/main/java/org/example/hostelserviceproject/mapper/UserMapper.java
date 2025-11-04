@@ -54,7 +54,7 @@ public class UserMapper {
     }
 
 
-    public UserResponse userResponse(User user) {
+    public static UserResponse userResponse(User user) {
         // Проверяем что это Student а не обычный User
         if (user instanceof Student student) {
             return UserResponse.builder()

@@ -28,7 +28,7 @@ public class ReservationMapper {
                 .build();
     }
 
-    public ReservationResponse entityToResponse(Reservation reservation) {
+    public static ReservationResponse entityToResponse(Reservation reservation) {
         return ReservationResponse.builder()
                 .startDate(reservation.getStartDate())
                 .endDate(reservation.getEndDate())

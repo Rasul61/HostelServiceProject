@@ -9,7 +9,7 @@ import java.util.List;
 public interface HostelService {
     Hostel addHostel(HostelRequest hostelRequest);
 
-    List<Hostel> getAllHostels();
+    List<HostelResponse> getAllHostels();
 
     HostelResponse getHostelById(Long id);
 

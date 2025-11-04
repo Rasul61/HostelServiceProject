@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.example.hostelserviceproject.mapper.ReservationMapper.entityToResponse;
+
 @Service
 @RequiredArgsConstructor
 public class ReservationServiceHandle implements ReservationService {
@@ -34,8 +36,10 @@ public class ReservationServiceHandle implements ReservationService {
     }
 
     @Override
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+    public List<ReservationResponse> getAllReservations() {
+        return reservationRepository.findAll().
+                stream().map(ReservationMapper::entityToResponse).toList();
+
     }
 
     @Override
@@ -44,7 +48,7 @@ public class ReservationServiceHandle implements ReservationService {
                 orElseThrow(() -> new RuntimeException("Not found reservation!"));
 
 
-        return reservationMapper.entityToResponse(reservation);
+        return entityToResponse(reservation);
     }
 
     @Override

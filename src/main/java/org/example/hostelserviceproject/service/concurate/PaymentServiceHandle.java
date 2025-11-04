@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static org.example.hostelserviceproject.mapper.PaymentMapper.entityToResponse;
+
 @Service
 @RequiredArgsConstructor
 public class PaymentServiceHandle implements PaymentService {
@@ -34,15 +36,17 @@ public class PaymentServiceHandle implements PaymentService {
     }
 
     @Override
-    public List<Payment> getAllPayments() {
-        return paymentRepository.findAll();
+    public List<PaymentResponse> getAllPayments() {
+        return paymentRepository.findAll().stream().
+                map(PaymentMapper::entityToResponse).
+                toList();
     }
 
     @Override
     public PaymentResponse getPaymentById(Long id) {
         Payment payment = paymentRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Not found payment!"));
-        return paymentMapper.entityToResponse(payment);
+        return entityToResponse(payment);
     }
 
     @Override
